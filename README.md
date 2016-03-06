@@ -1,4 +1,4 @@
-The source code typed from the book "The haskell School of Expression".
+Slightly modified source code typed from the book "The haskell School of Expression".
 
 - The code uses "soegtk" for graphics.
 - The soegtk in Cabal was outdated, so I had to download the sources from https://github.com/gtk2hs/soegtk, 
