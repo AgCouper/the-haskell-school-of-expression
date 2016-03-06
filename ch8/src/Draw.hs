@@ -1,6 +1,6 @@
 
 module Draw (inchToPixel, pixelToInch, intToFloat, xWin, yWin,
-             shapeToGraphic, regionToGraphicPoints, spaceClose) where
+             shapeToGraphic, regionToScanline, spaceClose) where
 import Graphics.SOE.Gtk
 import Region
 
@@ -39,10 +39,8 @@ shapeToGraphic (RtTriangle s1 s2) =
 shapeToGraphic (Polygon vts) =
     polygon $ map vertexToPoint vts
 
-regionToGraphicPoints :: Region.Region -> [Point]
-
-regionToGraphicPoints r =
-    [(x, y) | x <- [0..xWin], y <- [0..yWin], r `containsR` pointToVertex (x, y)]
+regionToScanline r y =
+    [ x | x <- [0..xWin], r `containsR` pointToVertex (x, y)]
 
 spaceClose :: Window -> IO()
 spaceClose w = do
